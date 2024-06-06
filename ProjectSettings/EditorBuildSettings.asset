@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/HomeScene.unity
+    guid: 9462fe110f3324b0aa6ae6b1096fe90f
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
@@ -14,3 +17,4 @@ EditorBuildSettings:
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: ed3786cfbfcca406793bce57ffd9a92e, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 2109731e1229248f59f97900a4f7a12f, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 9e20c559428df44c1a88b344d3031e09, type: 2}
+    xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: 8b274a54593f54d9dbcf1b4e4b9bd33d, type: 2}
