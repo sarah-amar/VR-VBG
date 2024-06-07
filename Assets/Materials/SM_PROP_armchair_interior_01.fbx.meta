@@ -3,7 +3,12 @@ guid: a9239de9789a644838c510671e624fac
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_PROP_sofa_interior
+    second: {fileID: 2100000, guid: bac91e22d6d3644428dcafc2615b1923, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
