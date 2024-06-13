@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using TMPro;
 
 public class Timer : MonoBehaviour
@@ -10,13 +8,10 @@ public class Timer : MonoBehaviour
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] float remainingTime;
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
+        if (PauseManager.IsPaused) return;
+
         if (remainingTime > 0)
         {
             remainingTime -= Time.deltaTime;
@@ -24,8 +19,8 @@ public class Timer : MonoBehaviour
         else if (remainingTime < 0)
         {
             remainingTime = 0;
-            //GameOver
             timerText.color = Color.red;
+            // Game over logic can be added here
         }
 
         int minutes = Mathf.FloorToInt(remainingTime / 60);
