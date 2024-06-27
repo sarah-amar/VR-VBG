@@ -25,10 +25,18 @@ public class ButtonInteractionHandler : MonoBehaviour
             RegisterActions(leftController, true);
             RegisterLeftSpecificActions();
         }
+        else
+        {
+            Debug.LogError("Left controller is not assigned!");
+        }
 
         if (rightController != null)
         {
             RegisterActions(rightController, false);
+        }
+        else
+        {
+            Debug.LogError("Right controller is not assigned!");
         }
     }
 
@@ -172,6 +180,11 @@ public class ButtonInteractionHandler : MonoBehaviour
     private void OnGripButtonPressed(InputAction.CallbackContext context)
     {
         Debug.Log("Grip button clicked!");
+
+        if (pauseManager != null)
+        {
+            pauseManager.TogglePause();
+        }
     }
 
     private void OnPrimaryButtonPressed(InputAction.CallbackContext context)

@@ -48,6 +48,7 @@ public class GetAllGameItems : MonoBehaviour
         List<GameObject> randomGameObjects = GetRandomGameItems(allObjects, 10);
         // ApplyMaterial(material, randomGameObjects);
         SpawnGameItems(randomGameObjects, positions);
+        Debug.Log("Game items: " + randomGameObjects.Count);
 
         // GameObject livesCanvas = GameObject.Find("LivesCanvas");`
         livesCanvas = GameObject.Find("LivesCanvas").GetComponent<Canvas>();
@@ -128,6 +129,7 @@ public class GetAllGameItems : MonoBehaviour
         while (currentGameItemIndex < gameItems.Count)
         {
             GameItem currentGameItem = gameItems[currentGameItemIndex];
+            Debug.Log("Displaying: " + currentGameItem.name);
             DisplayGameItem(currentGameItem);
             yield return new WaitForSeconds(5);
             HideCanvas();
@@ -175,20 +177,20 @@ public class GetAllGameItems : MonoBehaviour
         {
             //start animation
             Debug.Log("Found " + selectedObject.name);
-            Rigidbody rigidbody = selectedObject.gameObject.GetComponent<Rigidbody>();
-            XRGrabInteractable grabInteractable = selectedObject.gameObject.GetComponent<XRGrabInteractable>();
+            // Rigidbody rigidbody = selectedObject.gameObject.GetComponent<Rigidbody>();
+            // XRGrabInteractable grabInteractable = selectedObject.gameObject.GetComponent<XRGrabInteractable>();
 
-            if (grabInteractable == null)
-            {
-                Debug.Log(selectedObject.gameObject.GetComponent<BoxCollider>());
-                selectedObject.gameObject.AddComponent<BoxCollider>();
-                grabInteractable = selectedObject.gameObject.AddComponent<XRGrabInteractable>();
-                grabInteractable.movementType = XRBaseInteractable.MovementType.VelocityTracking;
+            // if (grabInteractable == null)
+            // {
+            //     Debug.Log(selectedObject.gameObject.GetComponent<BoxCollider>());
+            //     selectedObject.gameObject.AddComponent<BoxCollider>();
+            //     grabInteractable = selectedObject.gameObject.AddComponent<XRGrabInteractable>();
+            //     grabInteractable.movementType = XRBaseInteractable.MovementType.VelocityTracking;
 
-            }
+            // }
 
             // end animation
-            // SetItemFound(selectedObject);
+            SetItemFound(selectedObject);
 
 
         }
