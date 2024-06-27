@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
 {
@@ -61,6 +62,13 @@ public class PauseManager : MonoBehaviour
             Time.timeScale = 1;
             IsPaused = false;
         }
+    }
+
+    public void NewGame()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        int sceneIndex = currentScene.buildIndex;
+        SceneManager.LoadScene(sceneIndex);
     }
 
     public void Settings()

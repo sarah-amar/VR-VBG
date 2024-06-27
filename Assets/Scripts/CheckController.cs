@@ -25,10 +25,18 @@ public class ButtonInteractionHandler : MonoBehaviour
             RegisterActions(leftController, true);
             RegisterLeftSpecificActions();
         }
+        else
+        {
+            Debug.LogError("Left controller is not assigned!");
+        }
 
         if (rightController != null)
         {
             RegisterActions(rightController, false);
+        }
+        else
+        {
+            Debug.LogError("Right controller is not assigned!");
         }
     }
 
