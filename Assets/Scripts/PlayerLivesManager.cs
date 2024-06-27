@@ -1,14 +1,18 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerLivesManager : MonoBehaviour
 {
     public int playerLives = 3;
-    public Text livesText;
+    public List<Image> heartsImage;
+    public Canvas gameOverCanvas;
+    public ActionsGameOver actionsGameOver;
 
     void Start()
     {
         UpdateLivesUI();
+        gameOverCanvas.enabled = false;
     }
 
     public void LoseLife()
@@ -36,14 +40,22 @@ public class PlayerLivesManager : MonoBehaviour
 
     void UpdateLivesUI()
     {
-        if (livesText != null)
+        for (int i = 0; i < heartsImage.Count; i++)
         {
-            livesText.text = "Lives: " + playerLives;
+            if (i < playerLives)
+            {
+                heartsImage[i].enabled = true;
+            }
+            else
+            {
+                heartsImage[i].enabled = false;
+            }
         }
     }
 
     void GameOver()
     {
-        Debug.Log("Game Over!");
+        heartsImage[0].enabled = false;
+        actionsGameOver.ShowGameOver();
     }
 }
