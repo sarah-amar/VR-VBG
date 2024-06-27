@@ -180,11 +180,6 @@ public class ButtonInteractionHandler : MonoBehaviour
     private void OnGripButtonPressed(InputAction.CallbackContext context)
     {
         Debug.Log("Grip button clicked!");
-
-        if (pauseManager != null)
-        {
-            pauseManager.TogglePause();
-        }
     }
 
     private void OnPrimaryButtonPressed(InputAction.CallbackContext context)
