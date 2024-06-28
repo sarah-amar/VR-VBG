@@ -3,7 +3,12 @@ guid: 753733c43781d45edb491b68a296df30
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_PROP_wood_planks_interior_01
+    second: {fileID: 2100000, guid: c0341d6cde95d49108589dfa6ad1f06e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
