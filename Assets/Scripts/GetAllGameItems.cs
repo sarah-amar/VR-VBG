@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
 using System.Collections;
-
+using UnityEngine.SceneManagement;
 
 public class GetAllGameItems : MonoBehaviour
 {
@@ -34,12 +34,14 @@ public class GetAllGameItems : MonoBehaviour
     };
 
     private int currentGameItemIndex = 0;
+    private int collectedItemsCount = 0; // Compteur pour les objets collectés
     public Canvas canvas;
     public GameObject gameObjectInCanvas;
     public AnimationClip rotateAnimation;
     public BoxCollider parentCollider;
 
     public Canvas livesCanvas;
+
     void Start()
     {
         ListAllObjects(gameObject);
@@ -191,8 +193,6 @@ public class GetAllGameItems : MonoBehaviour
 
             // end animation
             SetItemFound(selectedObject);
-
-
         }
         else
         {
@@ -214,6 +214,25 @@ public class GetAllGameItems : MonoBehaviour
         if (gameItem != null)
         {
             gameItem.isFound = true;
+            collectedItemsCount++; // Incrémentez le compteur d'objets collectés
+            if (collectedItemsCount >= 3)
+            {
+                SceneManager.LoadScene(2); // Remplacez "NextScene" par le nom ou l'index de votre scène
+            }
+            if (collectedItemsCount >= 6)
+            {
+                SceneManager.LoadScene(3); // Remplacez "NextScene" par le nom ou l'index de votre scène
+            }
+        }
+    }
+
+    public void ResetCollectedItemsCount()
+    {
+        collectedItemsCount = 0;
+        currentGameItemIndex = 0;
+        foreach (var gameItem in gameItems)
+        {
+            gameItem.isFound = false;
         }
     }
 

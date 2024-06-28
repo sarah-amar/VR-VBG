@@ -7,6 +7,7 @@ public class Timer : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] float remainingTime;
+    [SerializeField] ActionsGameOver gameOverActions;
 
     void Update()
     {
@@ -16,11 +17,11 @@ public class Timer : MonoBehaviour
         {
             remainingTime -= Time.deltaTime;
         }
-        else if (remainingTime < 0)
+        else if (remainingTime <= 0)
         {
             remainingTime = 0;
             timerText.color = Color.red;
-            // Game over logic can be added here
+            gameOverActions.ShowGameOver();
         }
 
         int minutes = Mathf.FloorToInt(remainingTime / 60);

@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class PauseManager : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
     public static bool IsPaused { get; private set; } = false;
+    private ContinuousMoveProviderBase[] moveProviders;
+    private ContinuousTurnProviderBase[] turnProviders;
 
     private void Start()
     {
@@ -15,6 +18,10 @@ public class PauseManager : MonoBehaviour
         {
             pauseMenu.SetActive(false);
         }
+
+        // Trouver tous les ContinuousMoveProvider et ContinuousTurnProvider dans la scène
+        moveProviders = FindObjectsOfType<ContinuousMoveProviderBase>();
+        turnProviders = FindObjectsOfType<ContinuousTurnProviderBase>();
     }
 
     private void Update()
@@ -51,6 +58,7 @@ public class PauseManager : MonoBehaviour
             pauseMenu.SetActive(true);
             Time.timeScale = 0;
             IsPaused = true;
+            DisableMovement();
         }
     }
 
@@ -61,6 +69,7 @@ public class PauseManager : MonoBehaviour
             pauseMenu.SetActive(false);
             Time.timeScale = 1;
             IsPaused = false;
+            EnableMovement();
         }
     }
 
@@ -74,5 +83,31 @@ public class PauseManager : MonoBehaviour
     public void Settings()
     {
         Debug.Log("Settings");
+    }
+
+    private void DisableMovement()
+    {
+        foreach (var moveProvider in moveProviders)
+        {
+            moveProvider.enabled = false;
+        }
+
+        foreach (var turnProvider in turnProviders)
+        {
+            turnProvider.enabled = false;
+        }
+    }
+
+    private void EnableMovement()
+    {
+        foreach (var moveProvider in moveProviders)
+        {
+            moveProvider.enabled = true;
+        }
+
+        foreach (var turnProvider in turnProviders)
+        {
+            turnProvider.enabled = true;
+        }
     }
 }
