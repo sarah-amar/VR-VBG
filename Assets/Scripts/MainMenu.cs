@@ -34,6 +34,7 @@ public class HomeMenuScript : MonoBehaviour
         {
             item.onClick.AddListener(EnableMainMenu);
         }
+        
     }
 
     public void QuitGame()

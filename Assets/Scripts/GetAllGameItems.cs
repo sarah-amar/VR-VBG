@@ -42,18 +42,20 @@ public class GetAllGameItems : MonoBehaviour
 
     public Canvas livesCanvas;
 
+    public WinActionsManager winCanvas;
+
+    public float currentIndexScene;
+
     void Start()
     {
         ListAllObjects(gameObject);
         gameItems = new List<GameItem>();
 
         List<GameObject> randomGameObjects = GetRandomGameItems(allObjects, 10);
-        // ApplyMaterial(material, randomGameObjects);
         SpawnGameItems(randomGameObjects, positions);
-        Debug.Log("Game items: " + randomGameObjects.Count);
 
-        // GameObject livesCanvas = GameObject.Find("LivesCanvas");`
         livesCanvas = GameObject.Find("LivesCanvas").GetComponent<Canvas>();
+        winCanvas.HideWin();
 
 
         for (int i = 0; i < randomGameObjects.Count; i++)
@@ -69,6 +71,8 @@ public class GetAllGameItems : MonoBehaviour
         }
 
         StartCoroutine(DisplayAndFindNextGameItem());
+        currentIndexScene = SceneManager.GetActiveScene().buildIndex;
+        Debug.Log("new game");
     }
 
     void ListAllObjects(GameObject parent)
@@ -92,7 +96,7 @@ public class GetAllGameItems : MonoBehaviour
         GameItem gameItem = new GameItem
         {
             gameObject = parent,
-            addedCollider = addedCollider  // Utilisation de la variable corrected
+            addedCollider = addedCollider
         };
 
         foreach (Transform child in parent.transform)
@@ -104,18 +108,6 @@ public class GetAllGameItems : MonoBehaviour
     List<GameObject> GetRandomGameItems(List<GameObject> list, int count)
     {
         return list.OrderBy(x => Random.value).Take(count).ToList();
-    }
-
-    void ApplyMaterial(Material material, List<GameObject> gameItems)
-    {
-        foreach (GameObject item in gameItems)
-        {
-            Renderer renderer = item.GetComponent<Renderer>();
-            if (renderer != null)
-            {
-                renderer.material = material;
-            }
-        }
     }
 
     void SpawnGameItems(List<GameObject> gameItems, Vector3[] positions)
@@ -177,21 +169,6 @@ public class GetAllGameItems : MonoBehaviour
         GameObject selectedObject = args.interactableObject.transform.gameObject;
         if (selectedObject == gameItems[currentGameItemIndex].gameObject)
         {
-            //start animation
-            Debug.Log("Found " + selectedObject.name);
-            // Rigidbody rigidbody = selectedObject.gameObject.GetComponent<Rigidbody>();
-            // XRGrabInteractable grabInteractable = selectedObject.gameObject.GetComponent<XRGrabInteractable>();
-
-            // if (grabInteractable == null)
-            // {
-            //     Debug.Log(selectedObject.gameObject.GetComponent<BoxCollider>());
-            //     selectedObject.gameObject.AddComponent<BoxCollider>();
-            //     grabInteractable = selectedObject.gameObject.AddComponent<XRGrabInteractable>();
-            //     grabInteractable.movementType = XRBaseInteractable.MovementType.VelocityTracking;
-
-            // }
-
-            // end animation
             SetItemFound(selectedObject);
         }
         else
@@ -211,17 +188,19 @@ public class GetAllGameItems : MonoBehaviour
     public void SetItemFound(GameObject foundObject)
     {
         var gameItem = gameItems.FirstOrDefault(item => item.gameObject == foundObject);
+
         if (gameItem != null)
         {
             gameItem.isFound = true;
-            collectedItemsCount++; // Incrémentez le compteur d'objets collectés
-            if (collectedItemsCount >= 3)
+            collectedItemsCount++;
+            if (collectedItemsCount >= 10)
             {
-                SceneManager.LoadScene(2); // Remplacez "NextScene" par le nom ou l'index de votre scène
-            }
-            if (collectedItemsCount >= 6)
-            {
-                SceneManager.LoadScene(3); // Remplacez "NextScene" par le nom ou l'index de votre scène
+                if (SceneManager.GetActiveScene().buildIndex == 2) {
+                    winCanvas.ShowWin(); 
+                }
+                else {
+                    SceneManager.LoadScene(2);
+                }
             }
         }
     }
