@@ -90,7 +90,6 @@ namespace Samples
                     buttonRect.width = buttonSize.x;
                     if (GUI.Button(buttonRect, Content.k_Download))
                     {
-                        Debug.Log($"{feature} download button pressed. Do something here!");
                     }
 
                     featureRect.yMin += renderLineHeight;

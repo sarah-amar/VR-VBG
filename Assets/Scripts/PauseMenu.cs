@@ -82,7 +82,7 @@ public class PauseManager : MonoBehaviour
 
     public void Settings()
     {
-        Debug.Log("Settings");
+        // Debug.Log("Settings");
     }
 
     private void DisableMovement()

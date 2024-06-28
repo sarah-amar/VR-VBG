@@ -23,8 +23,6 @@ public class ObjectSelector : MonoBehaviour
             {
                 selectedObject = hitObject;
 
-                Debug.Log("Selected object: " + selectedObject.name);
-
                 HighlightObject(selectedObject, true);
 
                 hitObject.GetComponent<GetAllGameItems>().SetItemFound(hitObject);
