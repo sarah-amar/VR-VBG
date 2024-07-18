@@ -9,11 +9,12 @@ public class ActionsGameOver : MonoBehaviour
     public Canvas gameOverCanvas;
     public GameObject newGameButton;
     public GameObject quitButton;
-    public GameObject player; // Référence au joueur
+    public GameObject player;
     public ButtonInteractionHandler movementHandler; // Référence au script de gestion des déplacements
     private ContinuousMoveProviderBase[] moveProviders;
     private ContinuousTurnProviderBase[] turnProviders;
     private GetAllGameItems gameItemsManager; // Référence au script GetAllGameItems
+    public Timer gameTimer;
 
     void Start()
     {
@@ -33,12 +34,10 @@ public class ActionsGameOver : MonoBehaviour
     {
         if (gameItemsManager != null)
         {
-            gameItemsManager.ResetCollectedItemsCount(); // Réinitialiser le compteur d'objets collectés
+            gameItemsManager.ResetCollectedItemsCount();
         }
 
-        Scene currentScene = SceneManager.GetActiveScene();
-        int sceneIndex = currentScene.buildIndex;
-        SceneManager.LoadScene(sceneIndex);
+        SceneManager.LoadScene(1);
     }
 
     public void QuitGame()
@@ -50,6 +49,10 @@ public class ActionsGameOver : MonoBehaviour
     {
         gameOverCanvas.enabled = true;
         DisableMovement();
+        if (gameTimer != null)
+        {
+            gameTimer.StopTimer();
+        }
     }
 
     private void DisableMovement()
@@ -59,13 +62,11 @@ public class ActionsGameOver : MonoBehaviour
             movementHandler.enabled = false;
         }
 
-        // Désactiver tous les ContinuousMoveProvider
         foreach (var moveProvider in moveProviders)
         {
             moveProvider.enabled = false;
         }
 
-        // Désactiver tous les ContinuousTurnProvider
         foreach (var turnProvider in turnProviders)
         {
             turnProvider.enabled = false;

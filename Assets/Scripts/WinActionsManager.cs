@@ -1,24 +1,43 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class WinActionsManager : MonoBehaviour
 {
     public Canvas winCanvas;
     public GameObject newGameButton;
     public GameObject quitButton;
+    public GameObject player;
+    public ButtonInteractionHandler movementHandler;
+    private ContinuousMoveProviderBase[] moveProviders;
+    private ContinuousTurnProviderBase[] turnProviders;
+    private GetAllGameItems gameItemsManager;
+    public Timer gameTimer;
 
     void Start()
     {
         newGameButton.GetComponent<Button>().onClick.AddListener(NewGame);
         quitButton.GetComponent<Button>().onClick.AddListener(QuitGame);
+        winCanvas.enabled = false;
+
+        // Trouver tous les ContinuousMoveProvider et ContinuousTurnProvider dans la scène
+        moveProviders = FindObjectsOfType<ContinuousMoveProviderBase>();
+        turnProviders = FindObjectsOfType<ContinuousTurnProviderBase>();
+
+        // Trouver le script GetAllGameItems dans la scène
+        gameItemsManager = FindObjectOfType<GetAllGameItems>();
     }
 
-    public void ShowWin()
+    public void NewGame()
     {
-        winCanvas.enabled = true;
+        if (gameItemsManager != null)
+        {
+            gameItemsManager.ResetCollectedItemsCount();
+        }
+
+        SceneManager.LoadScene(1);
     }
 
     public void HideWin()
@@ -26,15 +45,36 @@ public class WinActionsManager : MonoBehaviour
         winCanvas.enabled = false;
     }
 
-    public void NewGame()
-    {
-        Scene currentScene = SceneManager.GetActiveScene();
-        int sceneIndex = currentScene.buildIndex + 1;
-        SceneManager.LoadScene(sceneIndex);
-    }
-
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void ShowWin()
+    {
+        winCanvas.enabled = true;
+        DisableMovement();
+        if (gameTimer != null)
+        {
+            gameTimer.StopTimer();
+        }
+    }
+
+    private void DisableMovement()
+    {
+        if (movementHandler != null)
+        {
+            movementHandler.enabled = false;
+        }
+
+        foreach (var moveProvider in moveProviders)
+        {
+            moveProvider.enabled = false;
+        }
+
+        foreach (var turnProvider in turnProviders)
+        {
+            turnProvider.enabled = false;
+        }
     }
 }

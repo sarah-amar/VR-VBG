@@ -43,6 +43,9 @@ public class GetAllGameItems : MonoBehaviour
     public Canvas livesCanvas;
 
     public WinActionsManager winCanvas;
+    public ActionsGameOver gameOverActions;
+
+    private bool gameWonOrLost = false;
 
     public float currentIndexScene;
 
@@ -124,7 +127,10 @@ public class GetAllGameItems : MonoBehaviour
         {
             GameItem currentGameItem = gameItems[currentGameItemIndex];
             Debug.Log("Displaying: " + currentGameItem.name);
+            if (collectedItemsCount != 10)
+            {
             DisplayGameItem(currentGameItem);
+            }
             yield return new WaitForSeconds(5);
             HideCanvas();
 
@@ -193,14 +199,13 @@ public class GetAllGameItems : MonoBehaviour
         {
             gameItem.isFound = true;
             collectedItemsCount++;
-            if (collectedItemsCount >= 10)
+            if (collectedItemsCount >= 5 && SceneManager.GetActiveScene().buildIndex == 1)
             {
-                if (SceneManager.GetActiveScene().buildIndex == 2) {
-                    winCanvas.ShowWin(); 
-                }
-                else {
-                    SceneManager.LoadScene(2);
-                }
+                SceneManager.LoadScene(2);
+            }
+            if (collectedItemsCount >= 5 && SceneManager.GetActiveScene().buildIndex == 2)
+            {
+                winCanvas.ShowWin(); 
             }
         }
     }
