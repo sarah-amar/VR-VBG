@@ -2,7 +2,6 @@ using UnityEngine.Audio;
 using System;
 using UnityEngine;
 
-//Credit to Brackeys youtube tutorial on Audio managers, as the majority of this code and learning how to use it was made by him.
 [System.Serializable]
 public class Sound
 {
@@ -29,7 +28,6 @@ public class AudioManager : MonoBehaviour
     public Sound[] sounds;
 
     public static AudioManager instance;
-    //AudioManager
 
     void Awake()
     {

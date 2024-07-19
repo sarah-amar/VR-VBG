@@ -19,7 +19,6 @@ public class PauseManager : MonoBehaviour
             pauseMenu.SetActive(false);
         }
 
-        // Trouver tous les ContinuousMoveProvider et ContinuousTurnProvider dans la scène
         moveProviders = FindObjectsOfType<ContinuousMoveProviderBase>();
         turnProviders = FindObjectsOfType<ContinuousTurnProviderBase>();
     }

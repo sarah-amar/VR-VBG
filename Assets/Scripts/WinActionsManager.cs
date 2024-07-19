@@ -22,11 +22,9 @@ public class WinActionsManager : MonoBehaviour
         quitButton.GetComponent<Button>().onClick.AddListener(QuitGame);
         winCanvas.enabled = false;
 
-        // Trouver tous les ContinuousMoveProvider et ContinuousTurnProvider dans la scène
         moveProviders = FindObjectsOfType<ContinuousMoveProviderBase>();
         turnProviders = FindObjectsOfType<ContinuousTurnProviderBase>();
 
-        // Trouver le script GetAllGameItems dans la scène
         gameItemsManager = FindObjectOfType<GetAllGameItems>();
     }
 

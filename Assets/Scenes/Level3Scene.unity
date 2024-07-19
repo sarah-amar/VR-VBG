@@ -347,19 +347,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 116395659}
+    m_TransformParent: {fileID: 1809793324}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c7677564c70214a49a48470b9f55cd82, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.35722
+      value: -1.2679996
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c7677564c70214a49a48470b9f55cd82, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.045817
+      value: 0.106999874
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c7677564c70214a49a48470b9f55cd82, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.2379084
+      value: 10.959
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c7677564c70214a49a48470b9f55cd82, type: 3}
       propertyPath: m_LocalRotation.w
@@ -410,7 +410,6 @@ GameObject:
   - component: {fileID: 35278765}
   - component: {fileID: 35278764}
   - component: {fileID: 35278763}
-  - component: {fileID: 35278762}
   m_Layer: 5
   m_Name: Canvas Timer
   m_TagString: Untagged
@@ -418,21 +417,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &35278762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 35278761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7150419fd70eb4592a0506a95eb230c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerText: {fileID: 898837546}
-  remainingTime: 300
-  gameOverActions: {fileID: 0}
 --- !u!114 &35278763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1527,8 +1511,6 @@ Transform:
   - {fileID: 888302801}
   - {fileID: 1514257975}
   - {fileID: 1411481653}
-  - {fileID: 1355924379}
-  - {fileID: 814369051}
   - {fileID: 173370192}
   - {fileID: 931540613}
   - {fileID: 1946322727}
@@ -1546,14 +1528,12 @@ Transform:
   - {fileID: 273130727}
   - {fileID: 193095244}
   - {fileID: 461445755}
-  - {fileID: 727936275}
   - {fileID: 215449765}
-  - {fileID: 675741701}
-  - {fileID: 1776207996}
   - {fileID: 795064538}
   - {fileID: 1836824631}
   - {fileID: 52350403}
   - {fileID: 1393837144}
+  - {fileID: 1355924379}
   - {fileID: 1308622032}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8075,19 +8055,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 116395659}
+    m_TransformParent: {fileID: 1809793324}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 268523bfdd6a24373abd67ec31a0861e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.81022
+      value: 0.27900028
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 268523bfdd6a24373abd67ec31a0861e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.9778166
+      value: 0.17500019
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 268523bfdd6a24373abd67ec31a0861e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.2859087
+      value: 11.007
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 268523bfdd6a24373abd67ec31a0861e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9551,19 +9531,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 116395659}
+    m_TransformParent: {fileID: 1809793324}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b9eb3baac43004e2588b943f68ec33a9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.156313
+      value: -0.067092896
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9eb3baac43004e2588b943f68ec33a9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.621217
+      value: 0.5316
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9eb3baac43004e2588b943f68ec33a9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.264059
+      value: 10.98515
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b9eb3baac43004e2588b943f68ec33a9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12810,7 +12790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 898837546}
   remainingTime: 300
-  gameOverActions: {fileID: 0}
+  gameOverActions: {fileID: 555013842}
 --- !u!1001 &1738608368
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13944,10 +13924,14 @@ Transform:
   - {fileID: 965372067}
   - {fileID: 452164077}
   - {fileID: 1997222787}
+  - {fileID: 727936275}
   - {fileID: 580062938}
   - {fileID: 993267025}
   - {fileID: 2004272586}
+  - {fileID: 675741701}
+  - {fileID: 1776207996}
   - {fileID: 1432360604}
+  - {fileID: 814369051}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1823935731 stripped
@@ -13961,19 +13945,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 116395659}
+    m_TransformParent: {fileID: 1809793324}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 3466de455087d4c7c834af2703a84f84, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.831557
+      value: 0.25766277
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3466de455087d4c7c834af2703a84f84, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.618817
+      value: 0.5339999
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3466de455087d4c7c834af2703a84f84, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.274909
+      value: 10.996
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3466de455087d4c7c834af2703a84f84, type: 3}
       propertyPath: m_LocalRotation.w

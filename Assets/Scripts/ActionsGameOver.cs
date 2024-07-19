@@ -10,10 +10,10 @@ public class ActionsGameOver : MonoBehaviour
     public GameObject newGameButton;
     public GameObject quitButton;
     public GameObject player;
-    public ButtonInteractionHandler movementHandler; // Référence au script de gestion des déplacements
+    public ButtonInteractionHandler movementHandler;
     private ContinuousMoveProviderBase[] moveProviders;
     private ContinuousTurnProviderBase[] turnProviders;
-    private GetAllGameItems gameItemsManager; // Référence au script GetAllGameItems
+    private GetAllGameItems gameItemsManager;
     public Timer gameTimer;
 
     void Start()
@@ -22,11 +22,9 @@ public class ActionsGameOver : MonoBehaviour
         quitButton.GetComponent<Button>().onClick.AddListener(QuitGame);
         gameOverCanvas.enabled = false;
 
-        // Trouver tous les ContinuousMoveProvider et ContinuousTurnProvider dans la scène
         moveProviders = FindObjectsOfType<ContinuousMoveProviderBase>();
         turnProviders = FindObjectsOfType<ContinuousTurnProviderBase>();
 
-        // Trouver le script GetAllGameItems dans la scène
         gameItemsManager = FindObjectOfType<GetAllGameItems>();
     }
 

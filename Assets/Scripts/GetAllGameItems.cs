@@ -34,7 +34,7 @@ public class GetAllGameItems : MonoBehaviour
     };
 
     private int currentGameItemIndex = 0;
-    private int collectedItemsCount = 0; // Compteur pour les objets collectés
+    private int collectedItemsCount = 0;
     public Canvas canvas;
     public GameObject gameObjectInCanvas;
     public AnimationClip rotateAnimation;
@@ -44,8 +44,6 @@ public class GetAllGameItems : MonoBehaviour
 
     public WinActionsManager winCanvas;
     public ActionsGameOver gameOverActions;
-
-    private bool gameWonOrLost = false;
 
     public float currentIndexScene;
 
@@ -187,8 +185,6 @@ public class GetAllGameItems : MonoBehaviour
     void OnHoverEntered(HoverEnterEventArgs args)
     {
         GameObject selectedObject = args.interactableObject.transform.gameObject;
-
-        //add white material
     }
 
     public void SetItemFound(GameObject foundObject)

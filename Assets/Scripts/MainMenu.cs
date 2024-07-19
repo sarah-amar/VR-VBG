@@ -14,7 +14,6 @@ public class HomeMenuScript : MonoBehaviour
     [Header("Main Menu Buttons")]
 
     public Button startNormalModeButton;
-    public Button startDarkModeButton;
     public Button settingsButton;
     public Button aboutButton;
     public Button quitButton;
@@ -25,7 +24,6 @@ public class HomeMenuScript : MonoBehaviour
     {
         EnableMainMenu();
         startNormalModeButton.onClick.AddListener(StartNormalGame);
-        startDarkModeButton.onClick.AddListener(StartDarkGame);
         settingsButton.onClick.AddListener(EnableSettings);
         aboutButton.onClick.AddListener(EnableAbout);
         quitButton.onClick.AddListener(QuitGame);
@@ -46,12 +44,6 @@ public class HomeMenuScript : MonoBehaviour
     {
         HideAll();
         SceneManager.LoadScene(1);
-    }
-
-    public void StartDarkGame()
-    {
-        HideAll();
-         SceneManager.LoadScene(2);
     }
 
     public void HideAll()
